@@ -89,7 +89,7 @@ router.get(
 )
 
 router.post(
-  '/create',
+  '/',
   validaCarro,
   async (req: express.Request, res: express.Response) => {
     const errors = validationResult(req)
