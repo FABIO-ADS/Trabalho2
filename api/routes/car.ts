@@ -6,9 +6,9 @@ import Car from '../db/models/car'
 
 const validaCarro = [
   check('nome', 'O nome do Carro é obrigatório').not().isEmpty(),
-  check('marca', 'A marca do Carro é obrigatório').not().isEmpty(),
+  check('marca', 'A marca do Carro é obrigatória').not().isEmpty(),
   check('placa', 'A placa do Carro é obrigatória').not().isEmpty(),
-  check('placa', 'Formato de placa invalido').matches(
+  check('placa', 'Formato de placa inválida').matches(
     /[A-Z]{3}[0-9][0-9A-Z][0-9]{2}/
   ),
   check('chassis', 'O chassis do Carro é obrigatório').not().isEmpty(),
@@ -17,7 +17,7 @@ const validaCarro = [
     max: 11
   }),
   check('ano', 'O ano do Carro é obrigatório').not().isEmpty(),
-  check('ano', 'O formato do ano é invalido')
+  check('ano', 'O formato do ano é inválido')
     .exists()
     .custom((value: string) => value.length == 4 && !isNaN(parseFloat(value))),
   check('quilometragem', 'A quilometragem do Carro é obrigatória')
@@ -32,7 +32,7 @@ router.get('/', async (req: express.Request, res: express.Response) => {
     res.json(car)
   } catch (err) {
     res.status(500).send({
-      errors: [{ message: 'Não foi possivel encontrar carros' }]
+      errors: [{ message: 'Não foi possível encontrar carros' }]
     })
   }
 })
